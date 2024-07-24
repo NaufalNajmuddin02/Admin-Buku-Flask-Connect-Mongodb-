@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Kategori</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        
+        body {
+            margin: 0;
+            height: 100vh;
+            background: linear-gradient(135deg, #FFDDC1, #FFABAB, #FFC3A0);
+            background-size: 600% 600%;
+            animation: gradientAnimation 15s ease infinite;
+            display: flex;
+            font-family: Arial, sans-serif;
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 0%; }
+            50% { background-position: 100% 100%; }
+            100% { background-position: 0% 0%; }
+        }
+
+        .sidebar {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            background-size: 600% 600%;
+            animation: gradientAnimation 15s ease infinite;
+            padding-top: 20px;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+        }
+
+        .sidebar h4 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .sidebar a {
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 18px;
+            color: #333;
+            display: block;
+            transition: background-color 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #e9ecef;
+        }
+
+        .sidebar .logout-link {
+            color: #fff;
+            background-color: #dc3545;
+            font-weight: bold;
+        }
+
+        .sidebar .logout-link:hover {
+            background-color: #c82333;
+        }
+
+        .content {
+            margin-left: 260px;
+            padding: 20px;
+            flex: 1;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #004085;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h4>Admin Menu</h4>
+        <a href="{{ url_for('view_books') }}">Daftar Buku</a>
+        <a href="{{ url_for('view_category') }}">Daftar Kategori</a>
+        <a href="{{ url_for('create_book') }}">Buat Buku</a>
+        <a href="{{ url_for('create_category') }}">Buat Kategori</a>
+        <a href="{{ url_for('index') }}" class="logout-link">Logout</a>
+    </div>
+    <div class="content">
+        <div class="container mt-4">
+            <h1>Edit Kategori</h1>
+            <form method="POST">
+                <div class="form-group">
+                    <label for="name">Nama Kategori</label>
+                    <input type="text" class="form-control" id="name" name="name" value="{{ category.name }}" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Simpan</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
